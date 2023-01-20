@@ -1,62 +1,97 @@
 ---
+import Author from "./Author.astro";
+
 export interface Props {
 	title: string;
-	body: string;
 	href: string;
+	image: string;
+	date: Date;
+	articleTags: string[];
+	type: "vertical" | "horizontal";
 }
 
-const { href, title, body } = Astro.props;
+const { href, title, image, type, date, articleTags } = Astro.props;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
+<a class="card-wrapper" href={href}>
+	<div class="image-wrapper">
+		<img src={image} alt="" />
+	</div>
+
+	<div class="card-info">
+		<Author date={date}/>
+		<h1>{title}</h1>
+
+		<div class="tags">
+			{
+				articleTags.map((tag) => {
+					return <span class="tag">#{tag} </span>;
+				})
+			}
+		</div>
+	</div>
+</a>
+
 <style>
-	.link-card {
-		list-style: none;
+	.card-wrapper {
 		display: flex;
-		padding: 0.15rem;
-		background-color: white;
-		background-image: var(--accent-gradient);
-		background-size: 400%;
-		border-radius: 0.5rem;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+		flex-direction: column;
+		flex: 1 0 100px;
+		
+		/* max-width: 400px; */
+
+		text-decoration: none;
+		color: unset;
+
+		gap: 10px;
 	}
 
-	.link-card > a {
+	.card-wrapper:hover img {
+		scale: 1.05;
+	}
+
+	.image-wrapper {
+		display: flex;
+
+		aspect-ratio: 1.5/1;
+		border-radius: 5px;
 		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: 1rem 1.3rem;
-		border-radius: 0.35rem;
-		color: #111;
-		background-color: white;
-		opacity: 0.8;
+
+		overflow: hidden;
 	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+
+		transition: scale 0.2s;
 	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-		color: #444;
+
+	.card-info {
+		display: flex;
+		flex-direction: column;
+
+		justify-content: space-between;
+
+		gap: 20px;
+
+		min-width: 250px;
+		width: auto;
+
+		flex: 1;
 	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
+
+	h1 {
+		font-family: "DM Sans";
+		font-style: normal;
+		font-weight: 700;
+		font-size: clamp(1.2rem, 5vw, 1.5rem);
 	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent));
+
+	.tag {
+		font-size: 14px;
+		color: #782BF1;
+		font-weight: 700;
 	}
 </style>
