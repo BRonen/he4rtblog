@@ -1,0 +1,51 @@
+---
+import Card from "./Card.astro";
+
+export interface Props {
+	category: string;
+	amount: number;
+}
+
+const { category, amount } = Astro.props;
+
+
+function ddmmyyyyToDate(date: string): Date {
+    const [day, month, year] = date.split('/');
+
+    return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+}
+
+const posts = (await Astro.glob('../pages/article/*.mdx'))
+    .filter(post => post.frontmatter.tags.includes(category) && post.url)
+    .sort((a, b) => {
+        /*@ts-ignore*/
+        return ddmmyyyyToDate(a.frontmatter.date) - ddmmyyyyToDate(b.frontmatter.date)
+    })
+    .reverse()
+    .slice(0, amount);
+
+const cards = posts.map(post => {
+		return {
+			href: post.url!,
+			title: post.frontmatter.title,
+			tags: post.frontmatter.tags,
+            date: ddmmyyyyToDate(post.frontmatter.date)
+		}
+	});
+---
+
+<div class="cards-wrapper">
+    {
+        cards.map(card => {
+            return <Card href={card.href} image="/card-placeholder2.png" title={card.title} type="horizontal" date={card.date} articleTags={card.tags} />
+        })
+    }
+</div>
+
+<style>
+    .cards-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+</style>
