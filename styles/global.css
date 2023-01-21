@@ -2,6 +2,9 @@
 
 
 :root {
+  /* Global color schema */
+  --c-primary: #782BF1;
+  
   /* Light theme */
   --c-light-text: #333;
   --c-light-background: #fff;

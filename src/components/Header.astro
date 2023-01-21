@@ -3,9 +3,18 @@ import "../../styles/global.css";
 ---
 
 <div class="header-background">
-  <img src="/logo-he4rt.svg" alt="Logo da Heart" />
-  <img src="/logo-he4rt-blog.svg" alt="Logo da HeartBlog" />
-  <img src="/search-icon.svg" alt="Icone de pesquisa" />
+  <img class="header-logo-he4rt" src="/logo-he4rt.svg" alt="Logo da Heart" />
+  <img
+    class="header-logo-he4rtBlog"
+    src="/logo-he4rt-blog.svg"
+    alt="Logo da HeartBlog"
+  />
+  <img
+    class="header-icon-search"
+    src="/search-icon.svg"
+    alt="Icone de pesquisa"
+  />
+  <input class="header-input-search" type="text" />
   <input
     id="dark-mode"
     class="dark-mode-checkbox visually-hidden"
@@ -21,13 +30,54 @@ import "../../styles/global.css";
     background-size: cover;
 
     width: 100%;
-    height: 350px;
+    height: 450px;
 
-    position: absolute;
+    position: relative;
     top: 0;
   }
 
-  .header-background img {
+  .header-logo-he4rt {
+    width: 70px;
+    height: auto;
+
+    position: absolute;
+    top: 55px;
+    left: 100px;
+  }
+
+  .header-logo-he4rtBlog {
+    width: 230px;
+    height: auto;
+
+    position: absolute;
+    top: 65px;
+    left: 180px;
+  }
+
+  .header-icon-search {
+    width: 20px;
+    height: auto;
+
+    position: absolute;
+    top: 65px;
+    right: 800px;
+
+    z-index: 2;
+  }
+
+  .header-input-search {
+    width: 300px;
+    height: 30px;
+    position: relative;
+    top: 65px;
+    right: 600px;
+    background-color: transparent;
+    border: none;
+    color: var(--c-light-background);
+    font-size: 1.2rem;
+    padding-left: 20px;
+    border-bottom: 2px solid var(--c-primary);
+    padding: 5px;
   }
 </style>
 
