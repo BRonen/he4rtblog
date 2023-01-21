@@ -35,10 +35,10 @@ const { href, title, image, type, date, articleTags } = Astro.props;
 <style>
 	.card-wrapper {
 		display: flex;
-		flex-direction: column;
-		flex: 1 0 100px;
-		
-		/* max-width: 400px; */
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		flex: 1;
 
 		text-decoration: none;
 		color: unset;
@@ -53,16 +53,18 @@ const { href, title, image, type, date, articleTags } = Astro.props;
 	.image-wrapper {
 		display: flex;
 
-		aspect-ratio: 1.5/1;
 		border-radius: 5px;
-		width: 100%;
+
+		flex-grow: 1;
+		flex-shrink: 1;
 
 		overflow: hidden;
 	}
 
 	img {
+		display: flex;
 		width: 100%;
-		height: 100%;
+		aspect-ratio: 1.5/1;
 		object-fit: cover;
 
 		transition: scale 0.2s;
@@ -76,8 +78,8 @@ const { href, title, image, type, date, articleTags } = Astro.props;
 
 		gap: 20px;
 
-		min-width: 250px;
 		width: auto;
+		min-width: 270px;
 
 		flex: 1;
 	}
@@ -86,7 +88,7 @@ const { href, title, image, type, date, articleTags } = Astro.props;
 		font-family: "DM Sans";
 		font-style: normal;
 		font-weight: 700;
-		font-size: clamp(1.2rem, 5vw, 1.5rem);
+		font-size: clamp(1.2rem, 4vw, 1.5rem);
 	}
 
 	.tag {
