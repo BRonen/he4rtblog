@@ -1,0 +1,40 @@
+---
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<Layout pageTitle={frontmatter.title}>
+  <div class="banner-post">
+    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+  </div>
+  <div class="container-post">
+    <slot />
+  </div>
+</Layout>
+
+<style>
+  p {
+    color: black;
+  }
+</style>
+
+<style>
+  .container-post {
+    display: block;
+  }
+  .banner-post {
+    position: absolute;
+    width: 100vw;
+    height: 600px;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: block;
+  }
+
+  img {
+    object-fit: contain;
+    z-index: -1;
+  }
+</style>

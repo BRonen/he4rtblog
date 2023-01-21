@@ -1,0 +1,47 @@
+---
+import "../../styles/global.css";
+---
+
+<div class="header-background">
+  <img src="/logo-he4rt.svg" alt="Logo da Heart" />
+  <img src="/logo-he4rt-blog.svg" alt="Logo da HeartBlog" />
+  <img src="/search-icon.svg" alt="Icone de pesquisa" />
+  <input
+    id="dark-mode"
+    class="dark-mode-checkbox visually-hidden"
+    type="checkbox"
+  />
+</div>
+
+<style>
+  .header-background {
+    background-image: url("/header-wave.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 100%;
+    height: 350px;
+
+    position: absolute;
+    top: 0;
+  }
+
+  .header-background img {
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const checkbox = document.querySelector(
+      ".dark-mode-checkbox"
+    ) as HTMLInputElement;
+
+    checkbox.checked = localStorage.getItem("darkMode") === "true";
+
+    checkbox.addEventListener("change", (event: Event) => {
+      const target = event.currentTarget as HTMLInputElement;
+      localStorage.setItem("darkMode", target.checked.toString());
+    });
+  });
+</script>

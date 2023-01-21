@@ -1,0 +1,41 @@
+---
+layout: "../../layouts/PostLayout.astro"
+title: Desconstruindo o useEffect usando Javascript
+author: Rickmff
+date: 20 jan
+tags: ["#React", "#!He4rt4Noobs", "#Hooks"]
+image:
+  url: "https://media.discordapp.net/attachments/1065993634182348850/1066135788934410330/leEdBc.png"
+  alt: "Banner Desconstruindo o useEffect usando Javascript"
+stars: "2.8k"
+fork: "122"
+watching: "198"
+
+---
+
+# Desconstruindo o useEffect usando Javascript
+
+Se você quiser simular o comportamento do useEffect apenas com JavaScript puro, pode usar uma função de efeito que é chamada imediatamente após o carregamento inicial da página e, em seguida, usar addEventListener para chamá-la novamente quando as dependências são alteradas.
+
+```JavaScript
+
+    let myProp = 'initial value';
+
+    function myEffect() {
+      // side effect logic
+    }
+
+    myEffect();
+
+    document.addEventListener('myPropChanged', (event) => {
+      myProp = event.detail;
+      myEffect();
+    });
+
+    document.dispatchEvent(new CustomEvent('myPropChanged', { detail: 'new value' }));
+ 
+```
+
+Neste exemplo, a função myEffect é chamada imediatamente após o carregamento inicial da página. Em seguida, um evento personalizado 'myPropChanged' é adicionado ao document, e quando este evento é disparado, o valor de myProp é atualizado e a função myEffect é chamada novamente.
+
+É importante notar que este exemplo é apenas uma simulação rudimentar do useEffect e não inclui as funcionalidades avançadas, como o gerenciamento de limpeza e o gerenciamento de erros, que são fornecidos pelo React.
