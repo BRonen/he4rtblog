@@ -4,20 +4,21 @@ import Carousel from "../components/Carousel.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
-    <div class="carousel-wrapper">
-      <h1>Frontend</h1>
-      <Carousel amount={3} category="Frontend" />
-    </div>
-    <div class="carousel-wrapper">
-      <h1>React</h1>
-      <Carousel amount={3} category="React" />
-    </div>
-    <div class="carousel-wrapper">
-      <h1>Hooks</h1>
-      <Carousel amount={3} category="Hooks" />
-    </div>
-  </main>
+	<main>
+		<div class="carousel-wrapper">
+			<h1>Frontend</h1>
+
+			<Carousel amount={2} category="Frontend" />
+		</div>
+		<div class="carousel-wrapper">
+			<h1>React</h1>
+			<Carousel amount={3} category="React" />
+		</div>
+		<div class="carousel-wrapper">
+			<h1>Hooks</h1>
+			<Carousel amount={3} category="Hooks" />
+		</div>
+	</main>
 </Layout>
 
 <style>
