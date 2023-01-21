@@ -1,0 +1,65 @@
+---
+export interface Props {
+	date: Date;
+}
+
+
+function getFormattedDate(date: Date) {
+    return new Intl.DateTimeFormat('pt-BR', {dateStyle: 'short', timeZone: 'America/Sao_Paulo'}).format(date);
+}
+
+const { date } = Astro.props;
+---
+
+<div>
+    <img src="/user.webp" alt="" />
+    <h1>MC Poze do Rodo</h1>
+    <aside>{getFormattedDate(date)}</aside>
+    <!-- <aside>19 Jan · 1 dia atrás</aside> -->
+</div>
+
+<style>
+    div {
+        display: grid;
+        grid-template-areas: 
+                "image title"
+                "image time";
+        grid-template-columns: min-content;
+
+        column-gap: 10px;
+        row-gap: 5px;
+    }
+
+    img {
+        grid-area: image;
+
+        border-radius: 100%;
+        aspect-ratio: 1/1;
+        width: 50px;
+
+        object-fit: cover;
+
+        margin: auto;
+
+    }
+
+    h1 {
+        grid-area: title;
+        
+        /* //styleName: 📘 | DM Sans/DM Sans - 24px - Bold; */
+        font-family: DM Sans;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0em;
+        text-align: left;
+
+        margin-top: auto;
+    }
+
+    aside {
+        font-size: 12px;
+        grid-area: time;
+
+        margin-bottom: auto;
+    }
+</style>
