@@ -1,8 +1,8 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import "../../styles/global.css"
-import '../styles/fonts.css';
+import "../../styles/global.css";
+import "../styles/fonts.css";
 
 export interface Props {
 	title: string;
@@ -12,20 +12,20 @@ const { pageTitle } = Astro.props;
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <Header />
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+	</head>
+	<body>
+		<Header />
 		<div class="container">
-      <slot />
-    </div>
-	<Footer />
-  </body>
+			<slot />
+		</div>
+		<Footer />
+	</body>
 </html>
 
 <style>
@@ -34,24 +34,29 @@ const { pageTitle } = Astro.props;
 		height: 300px;
 		object-fit: cover;
 	}
-  .container {
-    max-width: 1250px;
-    padding: 0 1rem;
-  }
+	.container {
+		max-width: 1250px;
+		padding: 0 1rem;
+	}
 
 	:root {
 		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			#da62c4 30%,
+			white 60%
+		);
 	}
 
 	html {
 		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
+		background-color: #f6f6f6;
 	}
 
 	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 	}
 
 	body {

@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SearchList from "../components/SearchList.svelte"
+
+const posts = await Astro.glob('../pages/article/*.mdx')
+---
+
+<Layout title="Search results.">
+	<main>
+        <SearchList posts={posts} client:only/>
+	</main>
+</Layout>
