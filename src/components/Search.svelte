@@ -1,21 +1,26 @@
 <script lang="ts">
-  let searchValue: any = "";
+  export let posts: Post[];
 
-  export let posts: any[];
+  let postsFiltered: Post[];
 
-  let postsFiltered: any[];
+  interface Post {
+    url: string
+    frontmatter: {
+      title: string
+    }
+  }
+
+  let searchValue: string = "";
 
   $: {
     postsFiltered = searchValue? posts.filter((post) =>
       post.frontmatter.title.includes(searchValue)
     ) : [];
 
-    console.log(posts, postsFiltered);
-
     posts.forEach(post => {
       if(post.frontmatter.title === searchValue)
         location.pathname = post.url;
-    })
+    });
   };
 </script>
 
