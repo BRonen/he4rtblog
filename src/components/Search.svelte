@@ -16,11 +16,6 @@
     postsFiltered = searchValue? posts.filter((post) =>
       post.frontmatter.title.includes(searchValue)
     ) : [];
-
-    posts.forEach(post => {
-      if(post.frontmatter.title === searchValue)
-        location.pathname = post.url;
-    });
   };
 </script>
 
