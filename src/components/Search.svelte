@@ -6,9 +6,11 @@
   let postsFiltered: any[];
 
   $: {
-    postsFiltered = posts.filter((post) =>
+    postsFiltered = searchValue? posts.filter((post) =>
       post.frontmatter.title.includes(searchValue)
-    );
+    ) : [];
+
+    console.log(posts, postsFiltered);
 
     posts.forEach(post => {
       if(post.frontmatter.title === searchValue)
@@ -24,22 +26,20 @@
   <div>
     <input
       bind:value={searchValue}
-      list="posts-hints"
       name="search"
       type="search"
       class="header-input-search"
     />
-    {#if !postsFiltered.length}
-      <p class="header-error-search">Nenhum post encontrado.</p>
-    {/if}
+    <div class="header-results-search">
+      {#each postsFiltered as post}
+        <a href={post.url} class="header-result-search">{post.frontmatter.title}</a>
+      {/each}
+      {#if !postsFiltered.length && searchValue}
+        <p class="header-error-search">Nenhum post encontrado.</p>
+      {/if}
+      </div>
   </div>
 </div>
-
-<datalist id="posts-hints">
-  {#each posts as post}
-    <option value={post.frontmatter.title}>{post.frontmatter.title}</option>
-  {/each}
-</datalist>
 
 <style>
   .header-search {
@@ -71,7 +71,28 @@
     border-bottom: 2px solid var(--c-primary);
   }
 
+  .header-results-search {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 300px;
+    top: calc(33px + 4rem);
+    background-color: black;
+    overflow: scroll;
+    max-height: 200px;
+  }
+
+  .header-result-search {
+    margin: 0.05rem 0;
+    padding: 0.3rem 0.5rem;
+    background-color: var(--c-light-background);
+    color: black;
+  }
+
   .header-error-search {
-    color: var(--c-dark-focus);
+    margin: 0.05rem 0;
+    padding: 0.3rem 0.5rem;
+    background-color: var(--c-light-background);
+    color: red;
   }
 </style>
