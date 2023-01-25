@@ -4,19 +4,19 @@
   let postsFiltered: Post[];
 
   interface Post {
-    url: string
+    url: string;
     frontmatter: {
-      title: string
-    }
+      title: string;
+    };
   }
 
   let searchValue: string = "";
 
   $: {
-    postsFiltered = searchValue? posts.filter((post) =>
-      post.frontmatter.title.includes(searchValue)
-    ) : [];
-  };
+    postsFiltered = searchValue
+      ? posts.filter((post) => post.frontmatter.title.includes(searchValue))
+      : [];
+  }
 </script>
 
 <div class="header-search">
@@ -37,7 +37,7 @@
       {#if !postsFiltered.length && searchValue}
         <p class="header-error-search">Nenhum post encontrado.</p>
       {/if}
-      </div>
+    </div>
   </div>
 </div>
 
@@ -55,7 +55,6 @@
     background: none;
     cursor: pointer;
     width: 20px;
-    height: 31px;
     border-bottom: 2px solid var(--c-primary);
   }
 
@@ -76,9 +75,8 @@
     flex-direction: column;
     position: absolute;
     width: 300px;
-    top: calc(33px + 4rem);
     background-color: black;
-    overflow: scroll;
+    overflow-y: scroll;
     max-height: 200px;
   }
 
