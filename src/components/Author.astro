@@ -1,19 +1,23 @@
 ---
+import type { Author } from '../content/_authors';
+
 export interface Props {
 	date: Date;
+    author: Author;
 }
-
 
 function getFormattedDate(date: Date) {
     return new Intl.DateTimeFormat('pt-BR', {dateStyle: 'short', timeZone: 'America/Sao_Paulo'}).format(date);
 }
 
-const { date } = Astro.props;
+const { date, author } = Astro.props;
+const avatarPath = author.avatar?.filePath ?? "/user.webp";
+const avatarAlt = author.avatar?.alt ?? "Avatar do usuário";
 ---
 
 <div>
-    <img src="/user.webp" alt="" />
-    <h1>MC Poze do Rodo</h1>
+    <img src={avatarPath} alt={avatarAlt} />
+    <h1>{author.name}</h1>
     <aside>{getFormattedDate(date)}</aside>
     <!-- <aside>19 Jan · 1 dia atrás</aside> -->
 </div>
