@@ -1,0 +1,9 @@
+export const IMAGE_FORMATS = ['.png', '.webp'];
+export const MIN_TAGS = 1;
+export const MAX_TAGS = 6;
+export const MIN_TAG_LENGTH = 2;
+export const MAX_TAG_LENGTH = 15;
+export const MIN_TITLE_LENGTH = 4;
+export const MAX_TITLE_LENGTH = 80;
+export const MIN_DESCRIPTION_LENGTH = 20;
+export const MAX_DESCRIPTION_LENGTH = 200

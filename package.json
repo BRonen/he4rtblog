@@ -16,6 +16,7 @@
     "@astrojs/svelte": "^2.0.0",
     "astro": "^2.0.0",
     "astro-critters": "^1.1.26",
+    "dayjs": "^1.11.7",
     "svelte": "^3.55.1"
   },
   "devDependencies": {
