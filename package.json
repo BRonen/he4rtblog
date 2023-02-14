@@ -11,12 +11,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.14.0",
+    "@astrojs/mdx": "^0.15.0",
     "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/svelte": "^1.0.2",
-    "astro": "^1.9.2",
+    "@astrojs/svelte": "^2.0.0",
+    "astro": "^2.0.0",
     "astro-critters": "^1.1.26",
-    "svelte": "^3.46.4"
+    "svelte": "^3.55.1"
   },
   "devDependencies": {
     "wrangler": "^2.8.0"
