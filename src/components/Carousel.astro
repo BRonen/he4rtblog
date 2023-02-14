@@ -9,13 +9,6 @@ export interface Props {
 
 const { category, amount } = Astro.props;
 
-
-function ddmmyyyyToDate(date: string): Date {
-    const [day, month, year] = date.split('/');
-
-    return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-}
-
 const posts = (await getCollection("article"))
     .filter((post) => post.data.tags.includes(category) && post.slug)
     .sort((a, b) => {
