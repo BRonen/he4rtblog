@@ -1,8 +1,9 @@
 ---
+import { getCollection } from "astro:content";
 import "../../styles/global.css";
 import SearchBox from "./Search.svelte";
 
-const posts = await Astro.glob('../pages/article/*.mdx')
+const posts = await getCollection("article");
 ---
 
 <div class="header-background">

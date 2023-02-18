@@ -1,22 +1,16 @@
 <script lang="ts">
-  export let posts: Post[];
+  import type { CollectionEntry } from "astro:content";
 
-  let postsFiltered: Post[];
+  export let posts: CollectionEntry<'article'>[];
 
-  interface Post {
-    url: string;
-    frontmatter: {
-      title: string;
-    };
-  }
-
+  let postsFiltered: CollectionEntry<'article'>[];
   let searchValue: string = "";
 
   $: {
-    postsFiltered = searchValue
-      ? posts.filter((post) => post.frontmatter.title.includes(searchValue))
-      : [];
-  }
+    postsFiltered = searchValue? posts.filter((post) =>
+      post.data.title.includes(searchValue)
+    ) : [];
+  };
 </script>
 
 <div class="header-search">
@@ -32,7 +26,7 @@
     />
     <div class="header-results-search">
       {#each postsFiltered as post}
-        <a href={post.url} class="header-result-search">{post.frontmatter.title}</a>
+        <a href={post.slug} class="header-result-search">{post.data.title}</a>
       {/each}
       {#if !postsFiltered.length && searchValue}
         <p class="header-error-search">Nenhum post encontrado.</p>

@@ -1,43 +1,49 @@
 ---
+import { getCollection } from "astro:content";
 import Card from "./Card.astro";
 
 export interface Props {
-	category: string;
-	amount: number;
+    category: string;
+    amount: number;
 }
 
 const { category, amount } = Astro.props;
 
-
-function ddmmyyyyToDate(date: string): Date {
-    const [day, month, year] = date.split('/');
-
-    return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-}
-
-const posts = (await Astro.glob('../pages/article/*.mdx'))
-    .filter(post => post.frontmatter.tags.includes(category) && post.url)
+const posts = (await getCollection("article"))
+    .filter((post) => post.data.tags.includes(category) && post.slug)
     .sort((a, b) => {
-        /*@ts-ignore*/
-        return ddmmyyyyToDate(a.frontmatter.date) - ddmmyyyyToDate(b.frontmatter.date)
+        return a.data.publishedAt.getTime() - b.data.publishedAt.getTime();
     })
     .reverse()
     .slice(0, amount);
 
-const cards = posts.map(post => {
-		return {
-			href: post.url!,
-			title: post.frontmatter.title,
-			tags: post.frontmatter.tags,
-            date: ddmmyyyyToDate(post.frontmatter.date)
-		}
-	});
+const cards = posts.map((post) => {
+    return {
+        href: `/article/${post.slug}`,
+        image: post.data.image?.filePath,
+        imageAlt: post.data.image?.alt,
+        title: post.data.title,
+        author: post.data.author,
+        tags: post.data.tags,
+        date: post.data.publishedAt,
+    };
+});
 ---
 
 <div class="cards-wrapper">
     {
-        cards.map(card => {
-            return <Card href={card.href} image="/card-placeholder2.png" title={card.title} type="horizontal" date={card.date} articleTags={card.tags} />
+        cards.map((card) => {
+            return (
+                <Card
+                    title={card.title}
+                    author={card.author}
+                    href={card.href}
+                    image={card.image}
+                    imageAlt={card.imageAlt}
+                    date={card.date}
+                    tags={card.tags}
+                />
+            );
         })
     }
 </div>
