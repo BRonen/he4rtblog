@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
+    "dev": "wrangler pages dev --kv=HE4RT_SEARCH_INDEXES --persist -- astro dev",
+    "dev:astro": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "wrangler pages dev ./dist",
