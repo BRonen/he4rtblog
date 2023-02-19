@@ -1,5 +1,5 @@
 import { z } from "astro:content";
-import { authorSchema } from "./schemas/_author";
+import { authorSchema } from "../schemas/author";
 
 export type Author = z.infer<typeof authorSchema>;
 export const authors: Author[] = [

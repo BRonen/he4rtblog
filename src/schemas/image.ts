@@ -1,5 +1,5 @@
 import { z } from 'astro:content';
-import { IMAGE_FORMATS } from './_constants';
+import { IMAGE_FORMATS } from './constants';
 import fs from 'fs';
 
 export const imageSchema = z.object({

@@ -1,8 +1,8 @@
 import { z } from "astro:content";
-import { authors } from "../_authors";
-import { MIN_TITLE_LENGTH, MAX_TITLE_LENGTH, MIN_DESCRIPTION_LENGTH, MAX_DESCRIPTION_LENGTH, MIN_TAGS, MAX_TAGS, MIN_TAG_LENGTH, MAX_TAG_LENGTH } from "./_constants";
-import { brazilianDateSchema } from "./_date";
-import { imageSchema } from "./_image";
+import { authors } from "../content/_authors";
+import { MIN_TITLE_LENGTH, MAX_TITLE_LENGTH, MIN_DESCRIPTION_LENGTH, MAX_DESCRIPTION_LENGTH, MIN_TAGS, MAX_TAGS, MIN_TAG_LENGTH, MAX_TAG_LENGTH } from "./constants";
+import { brazilianDateSchema } from "./date";
+import { imageSchema } from "./image";
 
 export const articleSchema = z.object({
   title: z.string()
