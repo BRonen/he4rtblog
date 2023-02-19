@@ -17,7 +17,9 @@
     "astro": "^2.0.0",
     "astro-critters": "^1.1.26",
     "dayjs": "^1.11.7",
-    "svelte": "^3.55.1"
+    "fuse.js": "^6.6.2",
+    "svelte": "^3.55.1",
+    "zod": "^3.20.6"
   },
   "devDependencies": {
     "wrangler": "^2.8.1"
