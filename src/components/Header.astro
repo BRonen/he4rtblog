@@ -1,9 +1,7 @@
 ---
-import { getCollection } from "astro:content";
 import "../../styles/global.css";
-import SearchBox from "./Search.svelte";
 
-const posts = await getCollection("article");
+import Search from './Search.svelte';
 ---
 
 <div class="header-background">
@@ -14,8 +12,8 @@ const posts = await getCollection("article");
       src="/logo-he4rt-blog.svg"
       alt="Logo da HeartBlog"
     />
+      <Search client:idle/>
   </div>
-  <SearchBox client:visible posts={posts} />
   <input
     id="dark-mode"
     class="dark-mode-checkbox visually-hidden"

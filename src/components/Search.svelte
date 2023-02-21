@@ -1,90 +1,94 @@
 <script lang="ts">
-  import type { CollectionEntry } from "astro:content";
+    import SearchInput from "./SearchInput.svelte";
+    import SearchResults from "./SearchResults.svelte";
+    import type { ArticleSearchIndex } from "../schemas/search";
+    import { fade } from "svelte/transition";
+    import { cubicIn } from "svelte/easing";
 
-  export let posts: CollectionEntry<'article'>[];
+    let abortController: AbortController;
+    let debounceID: ReturnType<typeof setTimeout>;
+    let isFocused: boolean;
+    let searching: boolean;
+    let searchInput: string;
+    let searchResults: ArticleSearchIndex[] = [];
+    let notFoundAnimation: () => {};
+    let resultsFoundAnimation: () => {};
 
-  let postsFiltered: CollectionEntry<'article'>[];
-  let searchValue: string = "";
+    async function search() {
+        abortController = new AbortController();
 
-  $: {
-    postsFiltered = searchValue? posts.filter((post) =>
-      post.data.title.includes(searchValue)
-    ) : [];
-  };
+        const response = await fetch("/api/search", {
+            method: "POST",
+            body: JSON.stringify({
+                query: searchInput,
+            }),
+            signal: abortController.signal,
+        }).catch((err) => console.error(err.message));
+
+        if (!response?.ok) {
+            return;
+        }
+
+        searching = false;
+        searchResults = await response.json();
+        searchResults.length === 0
+            ? notFoundAnimation()
+            : resultsFoundAnimation();
+    }
+
+    function debouncedSearch() {
+        if (searchInput?.length === 0) {
+            searchResults = [];
+            return;
+        }
+
+        searching = true;
+        abortController?.abort();
+
+        clearTimeout(debounceID);
+        debounceID = setTimeout(search, 500);
+    };
 </script>
 
-<div class="header-search">
-  <button class="header-icon-search">
-    <img src="/search-icon.svg" alt="Icone de pesquisa" />
-  </button>
-  <div>
-    <input
-      bind:value={searchValue}
-      name="search"
-      type="search"
-      class="header-input-search"
+<form class="wrapper" role="search">
+    <SearchInput
+        searchAnimation={searching}
+        bind:notFoundAnimation
+        bind:resultsFoundAnimation
+        bind:searchInput
+        bind:isFocused
+        on:input={debouncedSearch}
     />
-    <div class="header-results-search">
-      {#each postsFiltered as post}
-        <a href={post.slug} class="header-result-search">{post.data.title}</a>
-      {/each}
-      {#if !postsFiltered.length && searchValue}
-        <p class="header-error-search">Nenhum post encontrado.</p>
-      {/if}
+
+    <div class="results-wrapper">
+        {#if searchResults.length > 0 && searchInput.length > 0 && isFocused}
+            <div
+                in:fade={{ duration: 300 }}
+                out:fade={{ duration: 500, easing: cubicIn }}
+                class="results-container"
+            >
+                <SearchResults searchAnimation={searching} {searchResults} />
+            </div>
+        {/if}
     </div>
-  </div>
-</div>
+</form>
 
 <style>
-  .header-search {
-    display: flex;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-    height: fit-content;
-  }
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-  .header-icon-search {
-    border: none;
-    background: none;
-    cursor: pointer;
-    width: 20px;
-    border-bottom: 2px solid var(--c-primary);
-  }
+        width: 310px;
+    }
 
-  .header-input-search {
-    background-color: transparent;
-    color: var(--c-light-background);
-    font-size: 1.2rem;
-    width: 300px;
-    height: 30px;
-    padding-left: 20px;
-    padding: 5px;
-    border: none;
-    border-bottom: 2px solid var(--c-primary);
-  }
+    .results-wrapper {
+        position: relative;
+    }
 
-  .header-results-search {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    width: 300px;
-    background-color: black;
-    overflow-y: scroll;
-    max-height: 200px;
-  }
-
-  .header-result-search {
-    margin: 0.05rem 0;
-    padding: 0.3rem 0.5rem;
-    background-color: var(--c-light-background);
-    color: black;
-  }
-
-  .header-error-search {
-    margin: 0.05rem 0;
-    padding: 0.3rem 0.5rem;
-    background-color: var(--c-light-background);
-    color: red;
-  }
+    .results-container {
+        margin-top: 12px;
+        width: 100%;
+        position: absolute;
+    }
 </style>
