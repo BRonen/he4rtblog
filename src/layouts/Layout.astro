@@ -1,12 +1,18 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import "../../styles/global.css";
+import "../styles/global.css";
 import "../styles/fonts.css";
+import { getCollection } from "astro:content";
+import { writeLocalIndexes } from "../integrations/searchIndexes/searchIndexes";
 
 export interface Props {
 	title: string;
 }
+
+//A função abaixo é chamada neste arquivo para que as indexes
+//de pesquisa sejam atualizadas ao acessar qualquer página
+await writeLocalIndexes(await getCollection("article"));
 
 const { pageTitle } = Astro.props;
 ---
@@ -36,6 +42,7 @@ const { pageTitle } = Astro.props;
 	}
 	.container {
 		max-width: 1250px;
+		margin-inline: auto;
 		padding: 0 1rem;
 	}
 
