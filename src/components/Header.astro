@@ -26,11 +26,6 @@ import Search from './Search.svelte';
 </div>
 
 <style>
-  .header-background {
-    background-image: url("/header-wave.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
   .header-wrapper {
     display: flex;
     justify-content: space-between;
@@ -39,11 +34,25 @@ import Search from './Search.svelte';
     box-sizing: border-box;
 
     width: 100%;
-    height: 450px;
     padding: 50px 100px;
   }
 
+  .header-wrapper:after {
+    position: absolute;
+    content: '';
+    
     top: 0;
+    left: 0;
+    right: 0;
+    
+    height: 450px;
+    width: 100vw;
+    z-index: -1;
+    
+    background-image: url("/header-wave.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   @media (max-width: 900px) {
