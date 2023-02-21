@@ -1,18 +1,22 @@
 ---
-import "../../styles/global.css";
-
+import "../styles/global.css";
 import Search from './Search.svelte';
 ---
 
-<div class="header-background">
-  <div>
-    <img class="header-logo-he4rt" src="/logo-he4rt.svg" alt="Logo da Heart" />
-    <img
-      class="header-logo-he4rtBlog"
-      src="/logo-he4rt-blog.svg"
-      alt="Logo da HeartBlog"
-    />
+<div class="header-wrapper">
+  <div class="header-content">
+    <a class="logo-wrapper" href="/">
+      <img class="header-logo-he4rt" src="/logo-he4rt.svg" alt="Logo da Heart" />
+      <img
+        class="header-logo-he4rtBlog"
+        src="/logo-he4rt-blog.svg"
+        alt="Logo da HeartBlog"
+      />
+    </a>
+
+    <div class="right-section">
       <Search client:idle/>
+    </div>
   </div>
   <input
     id="dark-mode"
@@ -27,22 +31,39 @@ import Search from './Search.svelte';
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+  .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    box-sizing: border-box;
 
     width: 100%;
     height: 450px;
     padding: 50px 100px;
+  }
 
-    position: relative;
     top: 0;
-
-    display: flex;
   }
 
   @media (max-width: 900px) {
-    .header-background {
+    .header-wrapper {
       flex-direction: column;
       padding: 50px;
     }
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+  }
+
+  .logo-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
   }
 
   .header-logo-he4rt {
@@ -58,7 +79,6 @@ import Search from './Search.svelte';
 
     padding: 8px;
   }
-</style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -67,6 +87,9 @@ import Search from './Search.svelte';
     ) as HTMLInputElement;
 
     checkbox.checked = localStorage.getItem("darkMode") === "true";
+  .right-section {
+    display: flex;
+    align-items: center;
 
     checkbox.addEventListener("change", (event: Event) => {
       const target = event.currentTarget as HTMLInputElement;
@@ -74,3 +97,6 @@ import Search from './Search.svelte';
     });
   });
 </script>
+    gap: 50px;
+  }
+</style>
