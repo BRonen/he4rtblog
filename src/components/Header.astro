@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Search from './Search.svelte';
+import DarkLightToggle from "./DarkLightToggle.astro";
 ---
 
 <div class="header-wrapper">
@@ -16,13 +17,9 @@ import Search from './Search.svelte';
 
     <div class="right-section">
       <Search client:idle/>
+      <DarkLightToggle/>
     </div>
   </div>
-  <input
-    id="dark-mode"
-    class="dark-mode-checkbox visually-hidden"
-    type="checkbox"
-  />
 </div>
 
 <style>
@@ -89,23 +86,10 @@ import Search from './Search.svelte';
     padding: 8px;
   }
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const checkbox = document.querySelector(
-      ".dark-mode-checkbox"
-    ) as HTMLInputElement;
-
-    checkbox.checked = localStorage.getItem("darkMode") === "true";
   .right-section {
     display: flex;
     align-items: center;
 
-    checkbox.addEventListener("change", (event: Event) => {
-      const target = event.currentTarget as HTMLInputElement;
-      localStorage.setItem("darkMode", target.checked.toString());
-    });
-  });
-</script>
     gap: 50px;
   }
 </style>
