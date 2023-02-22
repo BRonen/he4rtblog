@@ -39,8 +39,8 @@ async function updateRemoteIndexes() {
     const kvNamespace = await miniflare.getKVNamespace('HE4RT_SEARCH_INDEXES');
     const kvData = JSON.parse(await kvNamespace.get('posts') ?? "[]");
     const searchIndexes: ArticleSearchIndex[] = z.array(searchIndexSchema).parse(kvData);
-    const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${process.env.CF_ACCOUNT_IDENTIFIER}/storage/kv/namespaces/${process.env.CF_KV_NAMESPACE_ID}/values/posts`, {
-        method: 'POST',
+    const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${process.env.CF_ACCOUNT_ID}/storage/kv/namespaces/${process.env.CF_KV_NAMESPACE_ID}/values/posts`, {
+        method: 'PUT',
         headers: {
             Authorization: `Bearer ${process.env.CF_KV_BEARER_TOKEN}`
         },
