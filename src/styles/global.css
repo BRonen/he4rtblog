@@ -2,49 +2,74 @@
   /* Global color schema */
   --c-primary: #782bf1;
 
-  /* Light theme */
+  /* Light color scheme */
   --c-light-text: #333;
-  --c-light-background: #fff;
+  --c-light-background: #F3F3F3;
   --c-light-focus: deepskyblue;
   --c-light-interactive: mediumvioletred;
+  --c-light-elevation-1: #EFEFEF;
+  --c-light-elevation-2: #EBEBEB;
 
-  /* Dark theme */
-  --c-dark-text: #fff;
-  --c-dark-background: #333;
+  /* Dark color scheme */
+  --c-dark-text: #FFFFFF;
+  --c-dark-background: #0D0D0D;
   --c-dark-focus: deeppink;
   --c-dark-interactive: palegreen;
+  --c-dark-elevation-1: #101010;
+  --c-dark-elevation-2: #151515;
 
-  --h-dark-background-1: #101010;
-  --h-dark-background-2: #151515;
-}
-
-body * {
-  font-family: 'DM Sans', sans-serif;
-  line-height: 1.5;
-}
-
-a {
-  color: var(--c-interactive);
-}
-
-}
-
+  /* Default color scheme (Light) */
   --c-text: var(--c-light-text);
   --c-background: var(--c-light-background);
   --c-focus: var(--c-light-focus);
   --c-interactive: var(--c-light-interactive);
+  --c-elevation-1: var(--c-light-elevation-1);
+  --c-elevation-2: var(--c-light-elevation-2);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-text: var(--c-dark-text);
+    --c-background: var(--c-dark-background);
+    --c-focus: var(--c-dark-focus);
+    --c-interactive: var(--c-dark-interactive);
+    --c-elevation-1: var(--c-dark-elevation-1);
+    --c-elevation-2: var(--c-dark-elevation-2);
+  }
+}
+
+[data-color-scheme="light"] {
+  --c-text: var(--c-light-text);
+  --c-background: var(--c-light-background);
+  --c-focus: var(--c-light-focus);
+  --c-interactive: var(--c-light-interactive);
+  --c-elevation-1: var(--c-light-elevation-1);
+  --c-elevation-2: var(--c-light-elevation-2);
+}
+
+[data-color-scheme="dark"] {
   --c-text: var(--c-dark-text);
   --c-background: var(--c-dark-background);
   --c-focus: var(--c-dark-focus);
   --c-interactive: var(--c-dark-interactive);
+  --c-elevation-1: var(--c-dark-elevation-1);
+  --c-elevation-2: var(--c-dark-elevation-2);
 }
 
 * {
   margin: 0;
   padding: 0;
 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+body * {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--c-text);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--c-interactive);
 }

@@ -52,7 +52,7 @@
         flex-direction: column;
 
         text-decoration: none;
-        color: white;
+        color: var(--c-dark-text);
 
         transition: opacity 0.2s ease-out;
 

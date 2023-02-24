@@ -1,9 +1,10 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import { CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
     const articleEntries = await getCollection("article");
+
     return articleEntries.map((entry) => ({
         params: { slug: entry.slug },
         props: { entry },
@@ -39,10 +40,10 @@ const { Content } = await entry.render();
                     fill="white"></path>
                 <path
                     d="M21.4325 17.2376L13.4918 25.0671L17.5082 29L30.8011 15.9718C34.0223 12.5168 34.8451 9.52552 33.1133 5.77347L25.4766 13.2866L23.4591 11.3066L19.4704 15.2666L21.4325 17.2376Z"
-                    stroke="#0D0D0D"></path>
+                    ></path>
                 <path
                     d="M29.1613 1.85868L9.503 21.2427L3.0362 14.8417C1.85201 13.3958 1.44408 12.4168 1.02799 10.4658C0.613444 4.53485 4.86017 0.864165 10.0465 1.01786C12.4839 1.32912 13.689 1.84128 15.4724 3.52224L11.4375 7.44607C9.71462 5.78066 7.4044 6.76775 6.82555 8.54484C6.29058 10.1872 7.811 11.6442 9.07012 12.8266L9.52142 13.2504L19.3045 3.52224C22.4458 0.800878 25.5134 0.339782 29.1613 1.85868Z"
-                    stroke="#0D0D0D"></path>
+                    ></path>
             </svg>
 
             <button>
@@ -55,7 +56,7 @@ const { Content } = await entry.render();
                 >
                     <path
                         d="M1 3.88889C1 3.12271 1.30102 2.38791 1.83684 1.84614C2.37266 1.30436 3.09938 1 3.85714 1H18.1429C18.9006 1 19.6273 1.30436 20.1632 1.84614C20.699 2.38791 21 3.12271 21 3.88889V27L11 21.9444L1 27V3.88889Z"
-                        stroke="white"
+                        
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"></path>
@@ -72,7 +73,6 @@ const { Content } = await entry.render();
                 >
                     <path
                         d="M8.89324 15.3645C9.17379 14.8033 9.33213 14.17 9.33213 13.5006C9.33213 12.8311 9.17379 12.1978 8.89324 11.6367M8.89324 15.3645C8.47338 16.2039 7.7824 16.877 6.93225 17.2747C6.0821 17.6724 5.12257 17.7714 4.20911 17.5557C3.29565 17.34 2.48177 16.8222 1.89933 16.0862C1.31689 15.3502 1 14.4391 1 13.5006C1 12.562 1.31689 11.6509 1.89933 10.9149C2.48177 10.1789 3.29565 9.6611 4.20911 9.4454C5.12257 9.2297 6.0821 9.32872 6.93225 9.72643C7.7824 10.1241 8.47338 10.7972 8.89324 11.6367M8.89324 15.3645L18.1044 19.97M8.89324 11.6367L18.1044 7.03108M18.1044 19.97C17.6101 20.9587 17.5287 22.1033 17.8783 23.1519C18.2278 24.2006 18.9796 25.0674 19.9683 25.5617C20.957 26.0561 22.1015 26.1374 23.1502 25.7879C24.1988 25.4383 25.0657 24.6865 25.56 23.6978C26.0543 22.7092 26.1357 21.5646 25.7861 20.516C25.4366 19.4673 24.6848 18.6005 23.6961 18.1061C23.2065 17.8614 22.6736 17.7154 22.1276 17.6766C21.5817 17.6378 21.0335 17.7069 20.5142 17.88C19.4656 18.2296 18.5987 18.9814 18.1044 19.97ZM18.1044 7.03108C18.3492 7.52054 18.6879 7.95698 19.1014 8.3155C19.5148 8.67403 19.9948 8.94761 20.514 9.12062C21.0332 9.29364 21.5814 9.3627 22.1272 9.32386C22.6731 9.28503 23.2059 9.13906 23.6954 8.89429C24.1848 8.64952 24.6213 8.31074 24.9798 7.8973C25.3383 7.48385 25.6119 7.00384 25.7849 6.48467C25.9579 5.9655 26.027 5.41733 25.9882 4.87147C25.9493 4.32561 25.8034 3.79274 25.5586 3.30329C25.0643 2.3148 24.1975 1.56317 23.149 1.21375C22.1005 0.864333 20.9561 0.945747 19.9676 1.44008C18.9791 1.93442 18.2275 2.80119 17.8781 3.8497C17.5286 4.89822 17.6101 6.0426 18.1044 7.03108Z"
-                        stroke="white"
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"></path>
@@ -85,7 +85,10 @@ const { Content } = await entry.render();
         </div>
 
         <aside class="container-aside">
-            <img src={entry.data.author.avatar?.filePath} alt="Icone de avatar do usuário" />
+            <img
+                src={entry.data.author.avatar?.filePath}
+                alt="Icone de avatar do usuário"
+            />
             <div class="author">
                 <h1>{entry.data.author.name}</h1>
                 <p>
@@ -179,7 +182,7 @@ const { Content } = await entry.render();
         border: none;
         cursor: pointer;
         font-size: 1.5rem;
-        color: var(--c-dark-text);
+        color: var(--c-text);
         padding: 0;
         margin: 0;
         display: flex;
@@ -199,7 +202,7 @@ const { Content } = await entry.render();
         justify-content: center;
         gap: 16px;
         width: 100vh;
-        background-color: var(--h-dark-background-1);
+        background-color: var(--c-elevation-1);
     }
 
     .container-aside img {
@@ -208,14 +211,14 @@ const { Content } = await entry.render();
         padding: 25px;
         border-radius: 50%;
         z-index: 0;
-        background-color: white;
+        background-color: var(--c-elevation-2);
         object-fit: contain;
     }
 
     .container-aside h1 {
         font-size: 1.5rem;
         font-weight: 600;
-        color: var(--c-dark-text);
+        color: var(--c-text);
         margin-top: 0;
         margin-bottom: 0;
     }
@@ -224,7 +227,7 @@ const { Content } = await entry.render();
     span {
         font-size: 0.875rem;
         font-weight: 400;
-        color: var(--c-dark-text);
+        color: var(--c-text);
         margin-top: 0;
         margin-bottom: 0;
         display: flex;
@@ -237,7 +240,7 @@ const { Content } = await entry.render();
         width: 2px;
         height: 2px;
         border-radius: 50%;
-        background-color: var(--c-dark-text);
+        background-color: var(--c-text);
         margin: 0 8px;
     }
 
@@ -253,14 +256,15 @@ const { Content } = await entry.render();
     svg path {
         width: 20px;
         height: 20px;
-        fill: var(--c-dark-text);
+        fill: var(--c-text);
+        stroke: var(--c-text);
     }
 
     .banner-post {
         position: absolute;
         width: 100vw;
         height: 600px;
-        background-color: #000;
+        background-color: var(--c-background);
         top: 0;
         left: 0;
         z-index: -1;

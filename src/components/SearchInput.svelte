@@ -93,13 +93,14 @@
     }
 
     input {
+        all: unset;
         grid-area: input;
 
         width: 95%;
         padding-left: 10px;
 
         border: none;
-        color: var(--c-light-background);
+        color: var(--c-dark-text);
         font-size: 1.2rem;
 
         background-color: transparent;

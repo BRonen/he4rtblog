@@ -35,9 +35,6 @@ const { pageTitle } = Astro.props;
 </html>
 
 <style>
-	html {
-		background-color: #f6f6f6;
-	}
 	body {
 		display: flex;
 		flex-direction: column;
@@ -45,6 +42,9 @@ const { pageTitle } = Astro.props;
 
 		gap: 100px;
 		min-height: 100vh;
+
+		background-color: var(--c-background);
+	}
 
 	.container {
 		max-width: 1250px;
