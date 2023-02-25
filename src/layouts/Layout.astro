@@ -26,28 +26,33 @@ const { pageTitle } = Astro.props;
 		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<Header />
-		<div class="container">
-			<slot />
+		<div class="wrapper">
+			<Header />
+			<div class="container">
+				<slot />
+			</div>
+			<Footer />
 		</div>
-		<Footer />
 	</body>
 </html>
 
 <style>
-	body {
-		display: flex;
-		flex-direction: column;
+	.wrapper {
 		overflow-x: hidden;
 
-		gap: 100px;
 		min-height: 100vh;
-
+		
 		background-color: var(--c-background);
 	}
-
+	
 	.container {
+		display: flex;
+		flex-direction: column;
+
+		gap: 100px;
+		
 		max-width: 1250px;
+		overflow-x: hidden;
 		margin-inline: auto;
 		padding: 0 1rem;
 	}
