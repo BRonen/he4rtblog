@@ -4,56 +4,74 @@
 
   /* Light color scheme */
   --c-light-text: #333;
+  --c-light-text-rgb: 51, 51, 51;
   --c-light-background: #F3F3F3;
+  --c-light-background-rgb: 243, 243, 243;
   --c-light-focus: deepskyblue;
   --c-light-interactive: mediumvioletred;
   --c-light-elevation-1: #EFEFEF;
   --c-light-elevation-2: #EBEBEB;
-
+  --c-light-wave-primary: #FFFFFF;
+  
   /* Dark color scheme */
   --c-dark-text: #FFFFFF;
+  --c-dark-text-rgb: 255, 255, 255;
   --c-dark-background: #0D0D0D;
+  --c-dark-background-rgb: 13, 13, 13;
   --c-dark-focus: deeppink;
   --c-dark-interactive: palegreen;
   --c-dark-elevation-1: #101010;
   --c-dark-elevation-2: #151515;
+  --c-dark-wave-primary: var(--c-primary);
 
   /* Default color scheme (Light) */
   --c-text: var(--c-light-text);
+  --c-text-rgb: var(--c-light-text-rgb);
   --c-background: var(--c-light-background);
+  --c-background-rgb: var(--c-light-background-rgb);
   --c-focus: var(--c-light-focus);
   --c-interactive: var(--c-light-interactive);
   --c-elevation-1: var(--c-light-elevation-1);
   --c-elevation-2: var(--c-light-elevation-2);
+  --c-wave-primary: var(--c-light-wave-primary);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --c-text: var(--c-dark-text);
+    --c-text-rgb: var(--c-dark-text-rgb);
     --c-background: var(--c-dark-background);
+    --c-background-rgb: var(--c-dark-background-rgb);
     --c-focus: var(--c-dark-focus);
     --c-interactive: var(--c-dark-interactive);
     --c-elevation-1: var(--c-dark-elevation-1);
     --c-elevation-2: var(--c-dark-elevation-2);
+    --c-wave-primary: var(--c-dark-wave-primary);
   }
 }
 
 [data-color-scheme="light"] {
   --c-text: var(--c-light-text);
+  --c-text-rgb: var(--c-light-text-rgb);
   --c-background: var(--c-light-background);
+  --c-background-rgb: var(--c-light-background-rgb);
   --c-focus: var(--c-light-focus);
   --c-interactive: var(--c-light-interactive);
   --c-elevation-1: var(--c-light-elevation-1);
   --c-elevation-2: var(--c-light-elevation-2);
+  --c-wave-primary: var(--c-light-wave-primary);
 }
 
 [data-color-scheme="dark"] {
   --c-text: var(--c-dark-text);
+  --c-text-rgb: var(--c-dark-text-rgb);
   --c-background: var(--c-dark-background);
+  --c-background-rgb: var(--c-dark-background-rgb);
   --c-focus: var(--c-dark-focus);
   --c-interactive: var(--c-dark-interactive);
   --c-elevation-1: var(--c-dark-elevation-1);
   --c-elevation-2: var(--c-dark-elevation-2);
+  --c-wave-primary: var(--c-dark-wave-primary);
 }
 
 * {
