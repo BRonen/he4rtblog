@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import HeaderWave from "./HeaderWave.astro";
 import Search from "./Search.svelte";
+import ColorSchemeToggle from "./ColorSchemeToggle.svelte";
 import HeaderLogo from "./HeaderLogo.astro";
 ---
 
@@ -12,6 +13,7 @@ import HeaderLogo from "./HeaderLogo.astro";
 
   <div class="right-section">
     <Search client:idle />
+    <ColorSchemeToggle client:idle />
   </div>
 </nav>
 
