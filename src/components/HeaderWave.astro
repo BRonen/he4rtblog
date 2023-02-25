@@ -1,0 +1,92 @@
+---
+---
+
+<div>
+    <svg class="background" viewBox="0 0 1440 354" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M1690.45 15.0226C1353.99 195.166 1089.27 216.404 903.087 198.045C672.225 175.277 468.147 81.4183 230.598 181.97C118.615 229.371 40.9005 301.155 -6.52173 353.159L-67.4397 0.162109L1637.12 -294L1690.45 15.0226Z"></path>
+        <path
+            d="M1690.45 15.0226C1353.99 195.166 1089.27 216.404 903.087 198.045C672.225 175.277 468.147 81.4183 230.598 181.97C118.615 229.371 40.9005 301.155 -6.52173 353.159L-67.4397 0.162109L1637.12 -294L1690.45 15.0226Z"
+            fill="url(#paint0_linear_284_652)"
+            fill-opacity="0.1"></path>
+        <defs>
+            <linearGradient
+                id="paint0_linear_284_652"
+                x1="0.801242"
+                y1="119.368"
+                x2="1442.3"
+                y2="122.368"
+                gradientUnits="userSpaceOnUse"
+            >
+                <stop></stop>
+                <stop offset="1" stop-opacity="0"></stop>
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <svg
+        class="wave-border"
+        preserveAspectRatio="none"
+        viewBox="0 0 1440 356"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M1689.24 17.3302C1352.78 197.474 1088.06 218.711 901.878 200.353C671.017 177.584 466.938 83.7259 229.39 184.278C117.407 231.679 39.692 303.463 -7.73023 355.466L-68.6482 2.46973L1635.91 -291.693L1689.24 17.3302Z"
+            fill="url(#paint0_linear_284_651)"></path>
+        <defs>
+            <linearGradient
+                id="paint0_linear_284_651"
+                x1="0.801297"
+                y1="343.868"
+                x2="1445.8"
+                y2="126.368"
+                gradientUnits="userSpaceOnUse"
+            >
+                <stop></stop>
+                <stop offset="1" stop-opacity="0"></stop>
+            </linearGradient>
+        </defs>
+    </svg>
+</div>
+
+<style>
+    div {
+        display: flex;
+        justify-content: center;
+
+        position: absolute;
+        left: 0;
+        right: 0;
+
+        height: 100%;
+        width: 100vw;
+        overflow-x: hidden;
+
+        pointer-events: none;
+
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    svg {
+        position: absolute;
+
+        width: 100%;
+        min-width: min(calc(250px + 100vw), 1920px);
+        height: min(65vw, 330px);
+        fill: var(--c-background);
+        z-index: -1;
+    }
+
+    svg.background stop {
+        stop-color: var(--c-wave-primary);
+    }
+
+    svg stop {
+        stop-color: var(--c-primary);
+    }
+
+    .wave-border {
+        z-index: -2;
+    }
+</style>
