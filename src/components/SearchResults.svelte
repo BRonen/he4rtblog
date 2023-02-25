@@ -25,15 +25,15 @@
         flex-direction: column;
 
         box-sizing: border-box;
+        overflow: hidden;
 
-        border-radius: 10px;
-
-        background: rgba(0, 0, 0, 0.7);
         border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+
+        background: rgba(var(--c-background-rgb), 0.7);
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
-        border: 1px solid rgba(61, 61, 61, 0.6);
+        border: 1px solid rgba(var(--c-text-rgb), 0.15);
     }
 
     .animation-wrapper {
@@ -51,9 +51,9 @@
         display: flex;
         flex-direction: column;
 
+        color: var(--c-text);
+        
         text-decoration: none;
-        color: var(--c-dark-text);
-
         transition: opacity 0.2s ease-out;
 
         padding: 9px;
@@ -66,6 +66,7 @@
     .search-entry h1 {
         font-size: 1.1rem;
         font-weight: 500;
+        color: var(--c-text);
 
         white-space: nowrap;
         overflow: hidden;
@@ -73,6 +74,7 @@
     }
 
     .search-entry aside {
+        color: var(--c-text);
         font-size: 0.85rem;
         font-weight: 300;
     }

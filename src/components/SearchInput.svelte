@@ -100,7 +100,7 @@
         padding-left: 10px;
 
         border: none;
-        color: var(--c-dark-text);
+        color: var(--c-text);
         font-size: 1.2rem;
 
         background-color: transparent;
