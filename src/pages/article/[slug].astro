@@ -15,14 +15,12 @@ const entry = Astro.props.entry as CollectionEntry<"article">;
 const { Content } = await entry.render();
 ---
 
-<Layout pageTitle={entry.data.title}>
-    <div class="banner-post">
-        <img
-            src={entry.data.image?.filePath}
-            width="300"
-            alt={entry.data.image?.alt}
-        />
-    </div>
+<Layout title={entry.data.title}>
+    <img
+        slot="article-image"
+        src={entry.data.image?.filePath}
+        alt={entry.data.image?.alt}
+    />
     <div class="wrapper-post">
         <div class="action-buttons">
             <svg
@@ -259,20 +257,18 @@ const { Content } = await entry.render();
         fill: var(--c-text);
         stroke: var(--c-text);
     }
-
-    .banner-post {
-        position: absolute;
-        width: 100vw;
-        height: 600px;
-        background-color: var(--c-background);
-        top: 0;
-        left: 0;
-        z-index: -1;
-        display: block;
-    }
-
+    
     img {
-        object-fit: contain;
-        z-index: -1;
+        display: block;
+
+        aspect-ratio: 2.4/1;
+        width: 100%;
+        min-height: 250px;
+        max-height: 600px;
+        
+        object-fit:cover;
+        z-index: -2;
+
+        background-color: var(--c-background);
     }
 </style>

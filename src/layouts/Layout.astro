@@ -28,6 +28,7 @@ const { pageTitle } = Astro.props;
 	<body>
 		<div class="wrapper">
 			<Header />
+			<slot name="article-image" />
 			<div class="container">
 				<slot />
 			</div>
@@ -51,9 +52,9 @@ const { pageTitle } = Astro.props;
 
 		gap: 100px;
 		
-		max-width: 1250px;
+		max-width: 1216px;
 		overflow-x: hidden;
 		margin-inline: auto;
-		padding: 0 1rem;
+		padding: 0 16px;
 	}
 </style>
