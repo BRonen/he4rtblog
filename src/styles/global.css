@@ -1,6 +1,7 @@
 :root {
   /* Global color schema */
   --c-primary: #782bf1;
+  --c-primary-rgb: 120, 43, 241;
 
   /* Light color scheme */
   --c-light-text: #333;
@@ -12,7 +13,7 @@
   --c-light-elevation-1: #EFEFEF;
   --c-light-elevation-2: #EBEBEB;
   --c-light-wave-primary: #FFFFFF;
-  
+
   /* Dark color scheme */
   --c-dark-text: #FFFFFF;
   --c-dark-text-rgb: 255, 255, 255;
