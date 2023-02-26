@@ -1,70 +1,97 @@
 ---
-import type { Author } from '../content/_authors';
+import type { Author } from "../content/_authors";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import duration from 'dayjs/plugin/duration';
+import "dayjs/locale/pt-br";
+
+dayjs.extend(duration);
+dayjs.extend(relativeTime);
+dayjs.locale("pt-br");
 
 export interface Props {
-	date: Date;
+    date: Date;
     author: Author;
 }
 
 function getFormattedDate(date: Date) {
-    return new Intl.DateTimeFormat('pt-BR', {dateStyle: 'short', timeZone: 'America/Sao_Paulo'}).format(date);
+    return new Intl.DateTimeFormat("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "2-digit",
+        timeZone: "America/Sao_Paulo",
+    }).format(date);
+}
+
+function getFormattedRelativeDate(date: Date) {
+    const daysAgo = dayjs(Date.now()).diff(date, 'days');
+
+    if(daysAgo === 0) {
+        return 'Hoje';
+    } else if(daysAgo === 1) {
+        return 'Ontem';
+    }
+
+    return dayjs.duration(-daysAgo, 'days').humanize(true);
 }
 
 const { date, author } = Astro.props;
-const avatarPath = author.avatar?.filePath ?? "/user.webp";
-const avatarAlt = author.avatar?.alt ?? "Avatar do usuário";
+const avatarPath = author.avatar?.filePath;
+const avatarAlt = author.avatar?.alt;
 ---
 
-<div>
-    <img src={avatarPath} alt={avatarAlt} />
-    <h1>{author.name}</h1>
-    <aside>{getFormattedDate(date)}</aside>
-    <!-- <aside>19 Jan · 1 dia atrás</aside> -->
+<div class="container">
+    <div class="wrapper">
+        <img src={avatarPath} alt={avatarAlt} />
+        <h1>{author.name}</h1>
+        <!-- <aside>{getFormattedDate(date)}</aside> -->
+        <aside>{getFormattedDate(date)} · {getFormattedRelativeDate(date)}</aside>
+    </div>
 </div>
 
 <style>
-    div {
+    .container {
+        container-type: inline-size;
+    }
+
+    .wrapper {
         display: grid;
-        grid-template-areas: 
-                "image title"
-                "image time";
-        grid-template-columns: min-content;
+        grid-template-columns: min-content max-content;
 
         column-gap: 10px;
-        row-gap: 5px;
+        row-gap: 1px;
     }
 
     img {
-        grid-area: image;
+        grid-row: 1/3;
 
         border-radius: 100%;
         aspect-ratio: 1/1;
-        width: 50px;
+        width: clamp(40px, 13cqw, 60px);
+
+        -webkit-user-drag: none;
+        user-drag: none;
 
         object-fit: cover;
 
         margin: auto;
 
+        background-color: var(--c-elevation-2);
     }
 
     h1 {
-        grid-area: title;
-        
-        /* //styleName: 📘 | DM Sans/DM Sans - 24px - Bold; */
-        font-family: DM Sans;
-        font-size: 16px;
-		color: var(--c-text);
+        font-size: clamp(1rem, 3.5cqw, 1.15rem);
+        color: var(--c-text);
         font-weight: 700;
-        letter-spacing: 0em;
         text-align: left;
 
         margin-top: auto;
     }
 
     aside {
-        font-size: 12px;
-		color: var(--c-text);
-        grid-area: time;
+        font-size: clamp(0.85rem, 3.5cqw, 0.95rem);
+        font-weight: 500;
+        color: rgba(var(--c-text-rgb), 0.75);
 
         margin-bottom: auto;
     }

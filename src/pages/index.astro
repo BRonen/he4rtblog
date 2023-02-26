@@ -6,17 +6,13 @@ import Carousel from "../components/Carousel.astro";
 <Layout title="Welcome to Astro.">
 	<main>
 		<div class="carousel-wrapper">
-			<h1>Frontend</h1>
-
-			<Carousel amount={2} category="Frontend" />
+			<Carousel featured={true} title={"Publicações recentes"} amount={3} category="Frontend" />
 		</div>
 		<div class="carousel-wrapper">
-			<h1>React</h1>
-			<Carousel amount={3} category="React" />
+			<Carousel title={"Frontend"} amount={3} category="Frontend" />
 		</div>
 		<div class="carousel-wrapper">
-			<h1>Hooks</h1>
-			<Carousel amount={3} category="Hooks" />
+			<Carousel title={"Backend"} amount={3} category="Frontend" />
 		</div>
 	</main>
 </Layout>
@@ -25,9 +21,11 @@ import Carousel from "../components/Carousel.astro";
   main {
     display: flex;
     flex-direction: column;
-    margin: 100px auto;
-    padding: 1.5rem;
+    margin: 150px auto;
     max-width: 1235px;
+    width: 100%;
+
+    box-sizing: border-box;
 
     gap: 100px;
   }
