@@ -22,17 +22,21 @@ import HeaderLogo from "./HeaderLogo.astro";
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-sizing: border-box;
-    isolation: isolate;
     
+    position: relative;
+    isolation: isolate;
+
     gap: 50px;
     
     width: 100%;
     max-width: 1280px;
     
+    box-sizing: border-box;
     margin-top: min(8vw, 60px);
     margin-inline: auto;
     padding-inline: 2em;
+
+    z-index: 2;
   }
 
   .right-section {
