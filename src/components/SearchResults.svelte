@@ -56,7 +56,7 @@
         text-decoration: none;
         transition: opacity 0.2s ease-out;
 
-        padding: 9px;
+        padding: 12px;
     }
 
     .search-entry:hover {

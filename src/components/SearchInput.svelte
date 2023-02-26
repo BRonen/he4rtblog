@@ -108,7 +108,7 @@
 
     .underline {
         grid-area: underline;
-        border-bottom: 3px solid var(--c-primary);
+        border-bottom: 2px solid var(--c-primary);
 
         border-radius: 100px;
     }
