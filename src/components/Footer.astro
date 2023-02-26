@@ -55,14 +55,20 @@
 
         margin: auto;
 
+        padding: 15px;
+
         justify-content: space-between;
     }
 
     .links {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
 
-        width: 320px;
+        gap: 10px;
+
+        width: 100%;
+        max-width: 320px;
     }
 
     .links a {
@@ -73,6 +79,8 @@
         font-style: normal;
         font-weight: 700;
         font-size: 16px;
+
+        margin: auto;
 
         transition: color 0.2s;
     }
@@ -105,5 +113,6 @@
         font-weight: 400;
         font-size: 14px;
         color: var(--c-text);
+        text-align: center;
     }
 </style>
