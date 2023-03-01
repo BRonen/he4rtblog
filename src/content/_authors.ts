@@ -10,7 +10,9 @@ export const authors: Author[] = [
             alt: 'Foto do MC Poze do Rodo usando uma corrente de ouro.'
         },
         socials: {
-            website: 'https://www.youtube.com/channel/UCsyd_nnNNDxlOs9TYrDvCoQ'
+            website: 'https://www.youtube.com/channel/UCsyd_nnNNDxlOs9TYrDvCoQ',
+            twitter: 'https://twitter.com/McPozedorodo',
+            linkedin: 'https://linkedin.com/mcpozedorodo'
         }
     },
     {
