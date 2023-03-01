@@ -29,7 +29,7 @@
 
         border-radius: 16px;
 
-        background: rgba(var(--c-background-rgb), 0.7);
+        background: rgba(var(--c-background-rgb), 0.85);
         box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
