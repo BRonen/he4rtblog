@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
+    "dev": "wrangler pages dev --kv=HE4RT_SEARCH_INDEXES --persist -- astro dev",
+    "dev:astro": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "wrangler pages dev ./dist",
@@ -17,9 +18,14 @@
     "astro": "^2.0.0",
     "astro-critters": "^1.1.26",
     "dayjs": "^1.11.7",
-    "svelte": "^3.55.1"
+    "fastest-levenshtein": "^1.0.16",
+    "miniflare": "^2.12.0",
+    "svelte": "^3.55.1",
+    "zod": "^3.20.6"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230214.0",
+    "typescript": "^4.9.5",
     "wrangler": "^2.8.1"
   }
 }
