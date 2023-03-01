@@ -20,6 +20,7 @@
     "dayjs": "^1.11.7",
     "fastest-levenshtein": "^1.0.16",
     "miniflare": "^2.12.0",
+    "remark-unwrap-images": "^3.0.1",
     "svelte": "^3.55.1",
     "zod": "^3.20.6"
   },
