@@ -50,8 +50,6 @@
     .search-entry {
         display: flex;
         flex-direction: column;
-
-        color: var(--c-text);
         
         text-decoration: none;
         transition: opacity 0.2s ease-out;

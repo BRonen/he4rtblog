@@ -86,7 +86,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body * {
+body {
   font-family: 'DM Sans', sans-serif;
   color: var(--c-text);
   line-height: 1.5;
