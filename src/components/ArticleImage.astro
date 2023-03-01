@@ -1,0 +1,22 @@
+---
+export interface Props {
+    src: string;
+    alt: string;
+    title: string;
+}
+
+const { src, alt, title } = Astro.props;
+---
+
+<img src={src} alt={alt} title={title} loading="lazy" />
+
+<style>
+    img {
+        margin: auto;
+        width: 90%;
+        border-radius: 10px;
+
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        background-color: var(--c-elevation-2);
+    }
+</style>

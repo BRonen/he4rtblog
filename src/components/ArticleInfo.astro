@@ -1,0 +1,101 @@
+---
+import type { Author as AuthorType } from "../content/_authors";
+import Author from "./Author.astro";
+import Social from "./Social.astro";
+
+export interface Props {
+    author: AuthorType;
+    date: Date;
+    tags: string[];
+}
+
+const { author, date, tags } = Astro.props;
+---
+
+<div class="container">
+    <div class="author">
+        <h2>Publicado por:</h2>
+        <Author author={author} date={date} />
+
+        <div class="separator"></div>
+
+        <div class="socials">
+            <Social twitter={author.socials?.twitter} linkedin={author.socials?.linkedin} website={author.socials?.website}/>
+        </div>
+    </div>
+
+    <div class="tags-wrapper">
+        <h2>Tags:</h2>
+        <div class="tag-list">
+            {tags.map((tag) => <div class="tag">{tag}</div>)}
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        box-sizing: border-box;
+
+        gap: 30px;
+
+        width: 100%;
+        padding: 20px;
+
+        border-radius: 10px;
+
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        background-color: var(--c-elevation-1);
+    }
+
+    .author {
+        display: flex;
+        flex-direction: column;
+
+        font-family: var(--font-family);
+
+        gap: 10px;
+    }
+
+    .socials {
+        width: max-content;
+    }
+
+    .separator {
+        height: 1px;
+
+        background-color: rgba(var(--c-text-rgb), 0.2);
+    }
+
+    .tags-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        font-family: var(--font-family);
+
+        gap: 10px;
+    }
+
+    .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.8rem;
+
+        gap: 10px;
+    }
+
+    .tag {
+        box-sizing: border-box;
+        padding: 0.15em 0.75em;
+
+        border-radius: 5px;
+
+        font-size: 0.8rem;
+        color: var(--c-primary);
+        font-weight: 700;
+
+        background-color: rgba(var(--c-primary-rgb), 0.1);
+    }
+</style>
