@@ -6,5 +6,11 @@ import critters from "astro-critters";
 import searchIndexes from './src/integrations/searchIndexes/searchIndexes';
 
 export default defineConfig({
+  markdown: {
+    shikiConfig: {
+      theme: 'github-dark',
+      wrap: true,
+    }
+  },
   integrations: [mdx(), svelte(), sitemap(), critters(), searchIndexes()]
 });
