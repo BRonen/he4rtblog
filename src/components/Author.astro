@@ -30,7 +30,7 @@ function getFormattedRelativeDate(date: Date) {
         return 'Ontem';
     }
 
-    return dayjs.duration(-daysAgo, 'days').humanize(true);
+    return `${dayjs.duration(-daysAgo, 'days').humanize()} atrás`;
 }
 
 const { date, author } = Astro.props;
