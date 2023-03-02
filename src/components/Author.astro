@@ -15,12 +15,10 @@ export interface Props {
 }
 
 function getFormattedDate(date: Date) {
-    return new Intl.DateTimeFormat("pt-BR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "2-digit",
-        timeZone: "America/Sao_Paulo",
-    }).format(date);
+    return dayjs(date).format('DD MMM')
+            .split(' ')
+            .map(entry => entry.charAt(0).toUpperCase() + entry.slice(1))
+            .join(' ');
 }
 
 function getFormattedRelativeDate(date: Date) {
@@ -89,6 +87,7 @@ const avatarAlt = author.avatar?.alt;
 
     aside {
         font-size: clamp(0.85rem, 3.5cqw, 0.95rem);
+        color: rgba(var(--c-text-rgb), 0.75);
         font-weight: 500;
 
         margin-bottom: auto;
