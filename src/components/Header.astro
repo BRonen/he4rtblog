@@ -32,9 +32,9 @@ import HeaderLogo from "./HeaderLogo.astro";
     max-width: 1280px;
     
     box-sizing: border-box;
-    margin-top: min(8vw, 60px);
+    margin-top: clamp(30px, 7vw, 60px);
     margin-inline: auto;
-    padding-inline: min(6vw, 60px);
+    padding-inline: clamp(30px, 7vw, 60px);
 
     z-index: 2;
   }

@@ -1,7 +1,7 @@
 ---
 ---
 
-<div>
+<div>   
     <svg class="background" viewBox="0 0 1440 354" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <path
             d="M1690.45 15.0226C1353.99 195.166 1089.27 216.404 903.087 198.045C672.225 175.277 468.147 81.4183 230.598 181.97C118.615 229.371 40.9005 301.155 -6.52173 353.159L-67.4397 0.162109L1637.12 -294L1690.45 15.0226Z"></path>
@@ -72,8 +72,8 @@
         position: absolute;
 
         width: 100%;
-        min-width: min(calc(250px + 100vw), 1920px);
-        height: min(65vw, 330px);
+        min-width: min(calc(200px + 100vw), 1440px);
+        height: clamp(250px, 50vw, 405px);
         fill: var(--c-background);
         z-index: -1;
     }
