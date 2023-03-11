@@ -56,6 +56,7 @@
         bind:value={searchInput}
         on:focusout={() => (isFocused = false)}
         on:focusin={() => (isFocused = true)}
+        on:keydown={(event) => { if(event.key === 'Enter') event.preventDefault() }}
         on:input
         type="search"
         spellcheck="false"
