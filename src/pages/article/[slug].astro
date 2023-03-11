@@ -153,5 +153,15 @@ const { Content } = await entry.render();
     article :global(table) {
         width: 90%;
         margin: auto;
+        table-layout: fixed;
+    }
+
+    article :global(th) {
+        color: var(--c-dark-text);
+        background-color: var(--c-primary);
+    }
+
+    article :global(td) {
+        background-color: var(--c-elevation-2);
     }
 </style>
