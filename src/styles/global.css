@@ -2,29 +2,33 @@
   /* Global color schema */
   --c-primary: #782bf1;
   --c-primary-rgb: 120, 43, 241;
-
+  
   /* Light color scheme */
   --c-light-text: #404040;
   --c-light-text-rgb: 64, 64, 64;
   --c-light-background: #F3F3F3;
   --c-light-background-rgb: 243, 243, 243;
   --c-light-focus: deepskyblue;
-  --c-light-interactive: mediumvioletred;
+  --c-light-interactive: var(--c-primary);
   --c-light-elevation-1: #EFEFEF;
   --c-light-elevation-2: #EBEBEB;
   --c-light-wave-primary: #FFFFFF;
-
+  --c-light-tag-color: white;
+  --c-light-tag-background: rgba(var(--c-primary-rgb), 0.8);
+  
   /* Dark color scheme */
   --c-dark-text: #d8d8d8;
   --c-dark-text-rgb: 216, 216, 216;
   --c-dark-background: #0D0D0D;
   --c-dark-background-rgb: 13, 13, 13;
   --c-dark-focus: deeppink;
-  --c-dark-interactive: palegreen;
+  --c-dark-interactive: #9452FF;
   --c-dark-elevation-1: #181818;
   --c-dark-elevation-2: #252525;
   --c-dark-wave-primary: var(--c-primary);
-
+  --c-dark-tag-color: var(--c-dark-text);
+  --c-dark-tag-background: rgba(var(--c-primary-rgb), 0.5);
+  
   /* Default color scheme (Light) */
   --c-text: var(--c-light-text);
   --c-text-rgb: var(--c-light-text-rgb);
@@ -35,6 +39,8 @@
   --c-elevation-1: var(--c-light-elevation-1);
   --c-elevation-2: var(--c-light-elevation-2);
   --c-wave-primary: var(--c-light-wave-primary);
+  --c-tag-color: var(--c-light-tag-color);
+  --c-tag-background: var(--c-light-tag-background);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,6 +55,8 @@
     --c-elevation-1: var(--c-dark-elevation-1);
     --c-elevation-2: var(--c-dark-elevation-2);
     --c-wave-primary: var(--c-dark-wave-primary);
+    --c-tag-color: var(--c-dark-tag-color);
+    --c-tag-background: var(--c-dark-tag-background);
   }
 }
 
@@ -63,6 +71,8 @@
   --c-elevation-1: var(--c-light-elevation-1);
   --c-elevation-2: var(--c-light-elevation-2);
   --c-wave-primary: var(--c-light-wave-primary);
+  --c-tag-color: var(--c-light-tag-color);
+  --c-tag-background: var(--c-light-tag-background);
 }
 
 [data-color-scheme="dark"] {
@@ -76,6 +86,8 @@
   --c-elevation-1: var(--c-dark-elevation-1);
   --c-elevation-2: var(--c-dark-elevation-2);
   --c-wave-primary: var(--c-dark-wave-primary);
+  --c-tag-color: var(--c-dark-tag-color);
+  --c-tag-background: var(--c-dark-tag-background);
 }
 
 * {
