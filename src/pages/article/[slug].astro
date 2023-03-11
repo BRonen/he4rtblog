@@ -97,7 +97,12 @@ const { Content } = await entry.render();
     article .title {
         font-size: clamp(1.75rem, 5vw, 2rem);
     }
-
+    
+    article :global(:is(table, .astro-code)) {
+        width: 90%;
+        margin: auto;
+    }
+    
     article :global(p, ul, ol, table) {
         font-size: clamp(1.1rem, 2vw, 1.2rem);
         line-height: 170%;
@@ -138,9 +143,6 @@ const { Content } = await entry.render();
     
     article :global(.astro-code) {
         border-radius: 10px;
-        width: 90%;
-        
-        margin: auto;
 
         box-sizing: border-box;
         padding: 20px;
@@ -151,8 +153,6 @@ const { Content } = await entry.render();
     }
 
     article :global(table) {
-        width: 90%;
-        margin: auto;
         table-layout: fixed;
     }
 
