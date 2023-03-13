@@ -44,9 +44,6 @@ const { author, date, tags } = Astro.props;
         padding: 20px;
 
         border-radius: 10px;
-
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-        background-color: var(--c-elevation-1);
     }
 
     .author {
@@ -94,6 +91,8 @@ const { author, date, tags } = Astro.props;
         font-size: 0.8rem;
         color: var(--c-tag-color);
         font-weight: 700;
+        
+        border: solid 1px var(--c-primary);
 
         background-color: var(--c-tag-background);
     }

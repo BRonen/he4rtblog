@@ -118,7 +118,7 @@ const {
 
         font-size: 0.8rem;
 
-        height: 1.7em;
+        height: calc(1.7em + 2px);
         width: 100%;
 
         overflow: hidden;
@@ -126,13 +126,15 @@ const {
 
     .tag {
         box-sizing: border-box;
-        height: 1.7em;
+        height: calc(1.7em + 2px);
         padding: 0.15em 0.75em;
 
         border-radius: 5px;
 
         color: var(--c-tag-color);
         font-weight: 700;
+
+        border: solid 1px var(--c-primary);
 
         background-color: var(--c-tag-background);
     }

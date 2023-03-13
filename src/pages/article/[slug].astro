@@ -109,18 +109,16 @@ const { Content } = await entry.render();
     }
 
     article :global(p code) {
-        color: var(--c-tag-color);
         font: monospace;
         font-size: 0.8em;
-
-        border: solid 1px var(--c-primary);
 
         padding: 4px;
         border-radius: 4px;
         -webkit-box-decoration-break: clone;
         box-decoration-break: clone;
         
-        background-color: var(--c-tag-background);
+        background-color: var(--c-elevation-2);
+        border: 1px solid rgba(var(--c-text-rgb), 0.15);
     }
 
     article :global(ul, ol) {
