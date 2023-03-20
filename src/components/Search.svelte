@@ -79,16 +79,35 @@
         flex-direction: column;
         justify-content: center;
 
-        width: 310px;
+        flex-basis: 310px;
     }
 
     .results-wrapper {
+        display: flex;
+        justify-content: center;
+        
         position: relative;
     }
-
+    
     .results-container {
-        margin-top: 12px;
-        width: 100%;
         position: absolute;
+        
+        width: 100%;
+        min-width: 290px;
+        margin-top: 12px;
+    }
+    
+    @media (max-width: 450px) {
+        .results-wrapper {
+            position: initial;
+        }
+
+        .results-container {
+            left: 0;
+            right: 0;
+
+            width: 84%;
+            margin-inline: auto;
+        }
     }
 </style>

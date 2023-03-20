@@ -1,23 +1,93 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600&display=swap');
-
 :root {
   /* Global color schema */
   --c-primary: #782bf1;
-
-  /* Light theme */
-  --c-light-text: #333;
-  --c-light-background: #fff;
+  --c-primary-rgb: 120, 43, 241;
+  
+  /* Light color scheme */
+  --c-light-text: #404040;
+  --c-light-text-rgb: 64, 64, 64;
+  --c-light-background: #F3F3F3;
+  --c-light-background-rgb: 243, 243, 243;
   --c-light-focus: deepskyblue;
-  --c-light-interactive: mediumvioletred;
-
-  /* Dark theme */
-  --c-dark-text: #fff;
-  --c-dark-background: #333;
+  --c-light-interactive: var(--c-primary);
+  --c-light-elevation-1: #EFEFEF;
+  --c-light-elevation-2: #EBEBEB;
+  --c-light-wave-primary: #FFFFFF;
+  --c-light-tag-color: white;
+  --c-light-tag-background: rgba(var(--c-primary-rgb), 0.8);
+  
+  /* Dark color scheme */
+  --c-dark-text: #d8d8d8;
+  --c-dark-text-rgb: 216, 216, 216;
+  --c-dark-background: #0D0D0D;
+  --c-dark-background-rgb: 13, 13, 13;
   --c-dark-focus: deeppink;
-  --c-dark-interactive: palegreen;
+  --c-dark-interactive: #9452FF;
+  --c-dark-elevation-1: #181818;
+  --c-dark-elevation-2: #252525;
+  --c-dark-wave-primary: var(--c-primary);
+  --c-dark-tag-color: var(--c-dark-text);
+  --c-dark-tag-background: rgba(var(--c-primary-rgb), 0.5);
+  
+  /* Default color scheme (Light) */
+  --c-text: var(--c-light-text);
+  --c-text-rgb: var(--c-light-text-rgb);
+  --c-background: var(--c-light-background);
+  --c-background-rgb: var(--c-light-background-rgb);
+  --c-focus: var(--c-light-focus);
+  --c-interactive: var(--c-light-interactive);
+  --c-elevation-1: var(--c-light-elevation-1);
+  --c-elevation-2: var(--c-light-elevation-2);
+  --c-wave-primary: var(--c-light-wave-primary);
+  --c-tag-color: var(--c-light-tag-color);
+  --c-tag-background: var(--c-light-tag-background);
+}
 
-  --h-dark-background-1: #101010;
-  --h-dark-background-2: #151515;
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --c-text: var(--c-dark-text);
+    --c-text-rgb: var(--c-dark-text-rgb);
+    --c-background: var(--c-dark-background);
+    --c-background-rgb: var(--c-dark-background-rgb);
+    --c-focus: var(--c-dark-focus);
+    --c-interactive: var(--c-dark-interactive);
+    --c-elevation-1: var(--c-dark-elevation-1);
+    --c-elevation-2: var(--c-dark-elevation-2);
+    --c-wave-primary: var(--c-dark-wave-primary);
+    --c-tag-color: var(--c-dark-tag-color);
+    --c-tag-background: var(--c-dark-tag-background);
+  }
+}
+
+[data-color-scheme="light"] {
+  color-scheme: light;
+  --c-text: var(--c-light-text);
+  --c-text-rgb: var(--c-light-text-rgb);
+  --c-background: var(--c-light-background);
+  --c-background-rgb: var(--c-light-background-rgb);
+  --c-focus: var(--c-light-focus);
+  --c-interactive: var(--c-light-interactive);
+  --c-elevation-1: var(--c-light-elevation-1);
+  --c-elevation-2: var(--c-light-elevation-2);
+  --c-wave-primary: var(--c-light-wave-primary);
+  --c-tag-color: var(--c-light-tag-color);
+  --c-tag-background: var(--c-light-tag-background);
+}
+
+[data-color-scheme="dark"] {
+  color-scheme: dark;
+  --c-text: var(--c-dark-text);
+  --c-text-rgb: var(--c-dark-text-rgb);
+  --c-background: var(--c-dark-background);
+  --c-background-rgb: var(--c-dark-background-rgb);
+  --c-focus: var(--c-dark-focus);
+  --c-interactive: var(--c-dark-interactive);
+  --c-elevation-1: var(--c-dark-elevation-1);
+  --c-elevation-2: var(--c-dark-elevation-2);
+  --c-wave-primary: var(--c-dark-wave-primary);
+  --c-tag-color: var(--c-dark-tag-color);
+  --c-tag-background: var(--c-dark-tag-background);
 }
 
 * {
@@ -29,76 +99,11 @@
 }
 
 body {
-  margin: 0;
-  font-size: 1.25em;
-}
-
-body * {
   font-family: 'DM Sans', sans-serif;
+  color: var(--c-text);
   line-height: 1.5;
 }
 
 a {
   color: var(--c-interactive);
-}
-
-h1 {
-  margin-top: 0;
-}
-
-.theme-container {
-  /* Make the light theme the default */
-  --c-text: var(--c-light-text);
-  --c-background: var(--c-light-background);
-  --c-focus: var(--c-light-focus);
-  --c-interactive: var(--c-light-interactive);
-
-  padding: 1.5rem;
-  color: var(--c-text);
-  background-color: var(--c-background);
-}
-
-.dark-mode-checkbox:checked ~ .theme-container {
-  /* Override the default theme */
-  --c-text: var(--c-dark-text);
-  --c-background: var(--c-dark-background);
-  --c-focus: var(--c-dark-focus);
-  --c-interactive: var(--c-dark-interactive);
-}
-
-.dark-mode-label {
-  margin-bottom: 1em;
-}
-
-:focus,
-.dark-mode-checkbox:focus ~ .theme-container .dark-mode-label {
-  outline: 2px solid var(--c-focus);
-}
-
-.dark-mode-label::before {
-  content: '\2610';
-}
-
-.dark-mode-checkbox:checked ~ .theme-container .dark-mode-label::before {
-  content: '\2611';
-}
-
-.visually-hidden {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  white-space: nowrap; /* 1. */
-}
-
-.grow {
-  flex-grow: 1; /* 1. */
-}
-
-.wrapper {
-  max-width: 600px;
 }

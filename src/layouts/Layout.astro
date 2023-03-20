@@ -20,58 +20,44 @@ const { pageTitle } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<Header />
-		<div class="container">
-			<slot />
+		<div class="wrapper">
+			<Header />
+			<slot name="article-image" />
+			<div class="container">
+				<slot />
+			</div>
+			<Footer />
 		</div>
-		<Footer />
 	</body>
 </html>
 
 <style>
-	.post-banner {
-		width: 100%;
-		height: 300px;
-		object-fit: cover;
+	.wrapper {
+		min-height: 100vh;
+		
+		background-color: var(--c-background);
 	}
+	
 	.container {
-		max-width: 1250px;
-		margin-inline: auto;
-		padding: 0 1rem;
-	}
-
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			#da62c4 30%,
-			white 60%
-		);
-	}
-
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #f6f6f6;
-	}
-
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-
-	body {
 		display: flex;
 		flex-direction: column;
-		overflow-x: hidden;
 
 		gap: 100px;
-		min-height: 100vh;
+
+		margin-bottom: 100px;
+		
+		max-width: 1216px;
+		margin-inline: auto;
+		padding: 0 16px;
 	}
 </style>

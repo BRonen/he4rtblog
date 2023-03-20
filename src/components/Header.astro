@@ -1,95 +1,51 @@
 ---
 import "../styles/global.css";
-import Search from './Search.svelte';
-import DarkLightToggle from "./DarkLightToggle.astro";
+import HeaderWave from "./HeaderWave.astro";
+import Search from "./Search.svelte";
+import ColorSchemeToggle from "./ColorSchemeToggle.svelte";
+import HeaderLogo from "./HeaderLogo.astro";
 ---
 
-<div class="header-wrapper">
-  <div class="header-content">
-    <a class="logo-wrapper" href="/">
-      <img class="header-logo-he4rt" src="/logo-he4rt.svg" alt="Logo da Heart" />
-      <img
-        class="header-logo-he4rtBlog"
-        src="/logo-he4rt-blog.svg"
-        alt="Logo da HeartBlog"
-      />
-    </a>
+<HeaderWave />
 
-    <div class="right-section">
-      <Search client:idle/>
-      <DarkLightToggle/>
-    </div>
+<nav>
+  <HeaderLogo />
+
+  <div class="right-section">
+    <Search client:idle />
+    <ColorSchemeToggle client:idle />
   </div>
-</div>
+</nav>
 
 <style>
-  .header-wrapper {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-
-    box-sizing: border-box;
-
-    width: 100%;
-    padding: 50px 100px;
-  }
-
-  .header-wrapper:after {
-    position: absolute;
-    content: '';
-    
-    top: 0;
-    left: 0;
-    right: 0;
-    
-    height: 450px;
-    width: 100vw;
-    z-index: -1;
-    
-    background-image: url("/header-wave.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  @media (max-width: 900px) {
-    .header-wrapper {
-      flex-direction: column;
-      padding: 50px;
-    }
-  }
-
-  .header-content {
+  nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    position: relative;
+    isolation: isolate;
 
+    gap: 70px;
+    
     width: 100%;
-  }
+    max-width: 1280px;
+    
+    box-sizing: border-box;
+    margin-top: clamp(30px, 7vw, 60px);
+    margin-inline: auto;
+    padding-inline: clamp(30px, 7vw, 60px);
 
-  .logo-wrapper {
-    display: flex;
-    flex-wrap: nowrap;
-  }
-
-  .header-logo-he4rt {
-    width: 70px;
-    height: 60px;
-
-    padding: 0 12px;
-  }
-
-  .header-logo-he4rtBlog {
-    width: 230px;
-    height: 50px;
-
-    padding: 8px;
+    z-index: 2;
   }
 
   .right-section {
     display: flex;
+    justify-content: right;
     align-items: center;
 
-    gap: 50px;
+    flex: 1;
+
+    gap: max(7vw, 15px);
   }
 </style>

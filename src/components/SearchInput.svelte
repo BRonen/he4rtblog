@@ -56,6 +56,7 @@
         bind:value={searchInput}
         on:focusout={() => (isFocused = false)}
         on:focusin={() => (isFocused = true)}
+        on:keydown={(event) => { if(event.key === 'Enter') event.preventDefault() }}
         on:input
         type="search"
         spellcheck="false"
@@ -93,13 +94,13 @@
     }
 
     input {
+        all: unset;
         grid-area: input;
 
         width: 95%;
         padding-left: 10px;
 
         border: none;
-        color: var(--c-light-background);
         font-size: 1.2rem;
 
         background-color: transparent;
@@ -107,7 +108,7 @@
 
     .underline {
         grid-area: underline;
-        border-bottom: 3px solid var(--c-primary);
+        border-bottom: 2px solid var(--c-primary);
 
         border-radius: 100px;
     }
