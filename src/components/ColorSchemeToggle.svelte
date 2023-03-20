@@ -2,52 +2,66 @@
     import { onMount } from "svelte";
     import { scale } from "svelte/transition";
     import { backOut } from "svelte/easing";
+    import { COLOR_SCHEME_COOKIE, COLOR_SCHEME_BODY_ATTRIBUTE } from "../../functions/_middleware";
+    import type { ColorSchemeValue } from "../../functions/_middleware";
 
-    type ColorScheme = "light" | "dark";
+    let nativeColorScheme: ColorSchemeValue;
+    let colorScheme: ColorSchemeValue;
 
-    const localStorageKey = "colorScheme";
-    const bodySchemeAttribute = "data-color-scheme";
-    let nativeColorScheme: ColorScheme;
-    let colorScheme: ColorScheme;
+    function getCookieColorScheme(): ColorSchemeValue | undefined {
+        const cookieColorScheme = document.cookie
+            .split(";")
+            .find((item) => item.includes(`${COLOR_SCHEME_COOKIE}=`))
+            ?.match(new RegExp(`(?:^|; )${COLOR_SCHEME_COOKIE}=([^;]*)`))
+            ?.at(1);
+
+        if(cookieColorScheme === 'light' || cookieColorScheme === 'dark') {
+            return cookieColorScheme;
+        }
+    }
+
+    function setCookieColorScheme(value: ColorSchemeValue, maxAge: number) {
+        document.cookie = `${COLOR_SCHEME_COOKIE}=${value};path=/;max-age=${maxAge};`;
+    }
 
     function toggleColorScheme() {
         colorScheme = colorScheme === "dark" ? "light" : "dark";
 
-        if(colorScheme === nativeColorScheme) {
-            localStorage.removeItem(localStorageKey);
-            document.body.removeAttribute(bodySchemeAttribute);
+        if (colorScheme === nativeColorScheme) {
+            setCookieColorScheme(colorScheme, 0);
+            document.body.removeAttribute(COLOR_SCHEME_BODY_ATTRIBUTE);
         } else {
-            localStorage.setItem(localStorageKey, colorScheme);
-            document.body.setAttribute(bodySchemeAttribute, colorScheme);
+            setCookieColorScheme(colorScheme, 60 * 60 * 24 * 365);
+            document.body.setAttribute(COLOR_SCHEME_BODY_ATTRIBUTE, colorScheme);
         }
     }
 
     onMount(() => {
-        let localStorageScheme = localStorage.getItem(localStorageKey);
         let matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
+        let cookieColorScheme = getCookieColorScheme();
         nativeColorScheme = matchMedia.matches ? "dark" : "light";
 
-        matchMedia.addEventListener('change', event => {
-            nativeColorScheme = event.matches ? "dark" : "light";
-
-            if(!localStorage.getItem(localStorageKey)) {
-                colorScheme = nativeColorScheme;
-            }
-        });
-
-        if (localStorageScheme === "light" || localStorageScheme === "dark") {
-            colorScheme = localStorageScheme;
-            document.body.setAttribute(bodySchemeAttribute, colorScheme);
+        if (cookieColorScheme === "light" || cookieColorScheme === "dark") {
+            colorScheme = cookieColorScheme;
+            document.body.setAttribute(COLOR_SCHEME_BODY_ATTRIBUTE, cookieColorScheme);
         } else {
             colorScheme = nativeColorScheme;
         }
+
+        matchMedia.addEventListener("change", (event) => {
+            nativeColorScheme = event.matches ? "dark" : "light";
+
+            if (!getCookieColorScheme()) {
+                colorScheme = nativeColorScheme;
+            }
+        });
     });
 </script>
 
 <button on:click={toggleColorScheme} aria-label="Alternar esquema de cores">
     {#if colorScheme === "dark"}
         <svg
-            in:scale={{easing: backOut, duration: 650}}
+            in:scale={{ easing: backOut, duration: 650 }}
             width="30"
             height="30"
             viewBox="0 0 30 30"
@@ -68,7 +82,7 @@
         </svg>
     {:else if colorScheme === "light"}
         <svg
-            in:scale={{easing: backOut, duration: 650}}
+            in:scale={{ easing: backOut, duration: 650 }}
             width="30"
             height="30"
             viewBox="0 0 20 20"
